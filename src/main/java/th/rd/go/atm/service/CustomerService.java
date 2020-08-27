@@ -58,8 +58,6 @@ public class CustomerService {
         return null;
     }
 
-//    public Customer checkPin(Customer inputCustomer) {
-//        return null;
-//    }
+
 
 }

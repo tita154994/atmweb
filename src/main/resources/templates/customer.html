@@ -5,36 +5,62 @@
 
 
 <div class="container"  layout:fragment="content">
-<h1>Register Customer</h1>
+<h4>Register Customer</h4>
 <form action="#" th:action="@{/customer}" method="POST">
-    <label for="inputId">Id</label>
-    <input type="input" name="id" id="inputId">
+    <div class="form-group row" >
+        <label class = "col-md-1" for="inputId">Id</label>
+        <input type="input" class="form-control col-md-3" name="id" id="inputId">
+    </div>
 
-    <label for="inputName">Name</label>
-    <input type="input" name="name" id="inputName">
+    <div class="form-group row">
+        <label class = "col-md-1" for="inputName">Name</label>
+        <input type="input" class="form-control col-md-3" name="name" id="inputName">
+    </div>
 
-    <label for="inputPin">Pin</label>
-    <input type="password" name="pin" id="inputPin">
+    <div class="form-group row">
+        <label class = "col-md-1" for="inputPin">Pin</label>
+        <input type="password" class="form-control col-md-3" name="pin" id="inputPin">
+    </div>
 
-    <input type="submit">
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary">
+    </div>
+
 </form>
 <hr>
 
 
 <h4>Customer All</h4>
-<table border="1px">
-    <tr><th>Id</th> <th>Name</th> <th>Pin</th> </tr>
+<!--<table border="1px">-->
+<!--    <tr><th>Id</th> <th>Name</th> <th>Pin</th> </tr>-->
 
-    <div th:each="customer : ${allCustomers}">
+<!--    <div th:each="customer : ${allCustomers}">-->
+<!--        <tr>-->
+<!--            <td><span class="display-4 my-font2" th:text="${customer.id}">Id</span></td>-->
+<!--            <td><span class="display-4 my-font2" th:text="${customer.name}">Name</span></td>-->
+<!--            <td><span class="display-4 my-font2" th:text="${customer.pin}">Pin</span></td>-->
+<!--        </tr>-->
+<!--    </div>-->
+
+<!--</table>-->
+    <table class="table table-bordered">
+        <thead class="thead-light">
         <tr>
-            <td><span class="display-4 my-font2" th:text="${customer.id}">Id</span></td>
-            <td><span class="display-4 my-font2" th:text="${customer.name}">Name</span></td>
-            <td><span class="display-4 my-font2" th:text="${customer.pin}">Pin</span></td>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Pin</th>
         </tr>
-    </div>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${allCustomers}">
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.pin}"></td>
+        </tr>
+        </tbody>
+    </table>
 
-</table>
-<hr>
+    <hr>
 <p><a th:href="@{/home}">Home Page</a></p>
 
 
