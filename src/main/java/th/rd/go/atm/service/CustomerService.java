@@ -2,6 +2,7 @@ package th.rd.go.atm.service;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import th.rd.go.atm.data.CustomerRepository;
 import th.rd.go.atm.model.Customer;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +15,13 @@ import java.util.List;
 public class CustomerService {
 
     //private List<Customer> customerList;
-    private ArrayList<Customer> customers = new ArrayList<>();
+    //private ArrayList<Customer> customers = new ArrayList<>();
+    private CustomerRepository repository;
+
+    public CustomerService(CustomerRepository repository) {
+        this.repository = repository;
+    }
+
 
 
 //    @PostConstruct
@@ -26,13 +33,23 @@ public class CustomerService {
     public void createCustomer(Customer customer) {
         String hashPin = hash(customer.getPin());
         customer.setPin(hashPin);
-        customers.add(customer);
+        //customers.add(customer);
+        repository.save(customer);
+
     }
 
+    public Customer findCustomer(int id) {
+        return repository.findById(id);
+    }
 
     public List<Customer> getCustomers() {
-        return new ArrayList<>(customers);
+        return repository.findAll();
     }
+
+
+//    public List<Customer> getCustomers() {
+//        return new ArrayList<>(customers);
+//    }
 
 
     private String hash(String pin) {
@@ -44,7 +61,7 @@ public class CustomerService {
     public Customer checkPin(Customer inputCustomer) {
         // 1. หา customer ที่มี id ตรงกับพารามิเตอร์
         Customer matchingCustomer = null;
-        for (Customer c : customers) {
+        for (Customer c : repository.findAll()) {
             if (inputCustomer.getId() == c.getId())
                 matchingCustomer = c;
         }

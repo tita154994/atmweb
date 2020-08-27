@@ -5,16 +5,16 @@
       xmlns:th="https://www.thymeleaf.org">
 
 <div layout:fragment="content" class="container">
-    <h1>Login</h1>
+    <h4>Login</h4>
     <form action="#" th:action="@{/login}" method="POST">
-        <div class="form-group">
-            <label for="inputId">Id</label>
-            <input type="input" class="form-control" name="id" id="inputId">
+        <div class="form-group row">
+            <label class = "col-md-1" for="inputId">Id</label>
+            <input type="input" class="form-control col-md-3" name="id" id="inputId">
         </div>
 
-        <div class="form-group">
-            <label for="inputPin">Pin</label>
-            <input type="password" class="form-control" name="pin" id="inputPin">
+        <div class="form-group row">
+            <label class = "col-md-1" for="inputPin">Pin</label>
+            <input type="password" class="form-control col-md-3" name="pin" id="inputPin">
         </div>
 
         <div class="form-group">
