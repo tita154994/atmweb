@@ -49,11 +49,19 @@ public class CustomerRepository implements JdbcRepository {
 
     @Override
     public void update(int id, Customer customer) {
-
-    }
+//        String query = "UPDATE customer (id,name,pin) VALUES (?,?,?);";
+//        Object[] data = new Object[]
+//                { customer.getId(), customer.getName(), customer.getPin() };
+//        jdbcTemplate.update(query, data);
+   }
 
     @Override
     public void deleteById(int id) {
+        String query = "Delete FROM customer WHERE id = ?";
+        Object[] data = new Object[]
+                {id};
+        jdbcTemplate.update(query, data);
+
 
     }
 

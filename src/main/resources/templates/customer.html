@@ -43,12 +43,15 @@
 <!--    </div>-->
 
 <!--</table>-->
+
     <table class="table table-bordered ">
         <thead class="thead-light">
         <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Pin</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -56,6 +59,27 @@
             <td th:text="${customer.id}"></td>
             <td th:text="${customer.name}"></td>
             <td th:text="${customer.pin}"></td>
+            <td>
+                <form action="#" th:action="@{/customer}" th:method="delete">
+                    <input type="hidden" value="delete" name="_method">
+                    <input type="hidden" th:value="${customer.id}" name="id" >
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value = "Delete">
+                    </div>
+
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/customer}" th:method="put">
+                    <input type="hidden" value="put" name="_method">
+                    <input type="hidden" th:value="${customer.id}" name="id" >
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-danger" value = "Update">
+                    </div>
+
+                </form>
+            </td>
+
         </tr>
         </tbody>
     </table>

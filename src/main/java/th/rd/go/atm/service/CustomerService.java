@@ -46,6 +46,13 @@ public class CustomerService {
         return repository.findAll();
     }
 
+    public void deleteCustomer(int id) {
+         repository.deleteById(id);
+    }
+
+    public void updateCustomer(Customer customer) {
+        repository.update(customer.getId(),customer);
+    }
 
 //    public List<Customer> getCustomers() {
 //        return new ArrayList<>(customers);
